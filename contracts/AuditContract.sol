@@ -18,12 +18,12 @@ contract AuditContract {
     event ContractAuthorized(address indexed contractAddress);
 
     modifier onlyAdmin() {
-        require(msg.sender == admin, "Only admin can perform this action");
+        require(msg.sender == admin, "Error: Only admin can perform this action");
         _;
     }
 
     modifier onlyAuthorized() {
-        require(authorizedContracts[msg.sender], "Not authorized to log");
+        require(authorizedContracts[msg.sender], "Error: Not authorized to log this action");
         _;
     }
 
