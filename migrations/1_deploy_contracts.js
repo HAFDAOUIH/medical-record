@@ -1,6 +1,6 @@
 const AuditContract = artifacts.require("AuditContract");
 const DoctorContract = artifacts.require("DoctorContract");
-const PatientContract = artifacts.require("PatientContractxx");
+const PatientContract = artifacts.require("PatientContract");
 
 module.exports = function (deployer) {
     deployer.deploy(AuditContract).then(() => {
