@@ -16,5 +16,8 @@
     "@truffle/hdwallet-provider": "^2.1.15",
     "dotenv": "^16.4.7",
     "web3": "^4.16.0"
+  },
+  "devDependencies": {
+    "truffle": "^5.11.5"
   }
 }

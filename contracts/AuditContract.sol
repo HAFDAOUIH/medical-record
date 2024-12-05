@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
-
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
 contract AuditContract {
     struct AuditLog {
@@ -27,11 +26,14 @@ contract AuditContract {
         _;
     }
 
+    // Explicit constructor with validation
     constructor() {
-        admin = msg.sender;
+        admin = msg.sender;  // Set the admin to the deployer's address
+        require(admin != address(0), "Error: Invalid admin address");  // Ensure valid admin address
     }
 
     function authorizeContract(address contractAddress) public onlyAdmin {
+        require(contractAddress != address(0), "Error: Invalid contract address");
         authorizedContracts[contractAddress] = true;
         emit ContractAuthorized(contractAddress);
     }
@@ -41,6 +43,10 @@ contract AuditContract {
         address subject,
         string memory action
     ) public onlyAuthorized {
+        require(actor != address(0), "Error: Invalid actor address");
+        require(subject != address(0), "Error: Invalid subject address");
+        require(bytes(action).length > 0, "Error: Action cannot be empty");
+
         auditLogs.push(AuditLog({
             actor: actor,
             subject: subject,
