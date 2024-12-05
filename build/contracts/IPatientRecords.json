@@ -1,15 +1,15 @@
 {
   "contractName": "IPatientRecords",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPatientRecords.sol\":\"IPatientRecords\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPatientRecords.sol\":{\"keccak256\":\"0x10fbbc48d12fe9d9be1c66f82a9b4a8d5e4f87a49b36a0783ee4134f5844b261\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5538a51d2c90e75f703a917e9f355aa5e7b581ce1662779b6b7a969b4a9fc7e9\",\"dweb:/ipfs/Qmet28rbC7Q2uxwYvWFtM7zrPJk9xXxZMgUyTREnJYW9KG\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212200fbb6479e85015434bc9b67eca2dd8a29d105c699f22896974e8b61b841642d164736f6c63430008130033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212200fbb6479e85015434bc9b67eca2dd8a29d105c699f22896974e8b61b841642d164736f6c63430008130033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPatientRecords.sol\":\"IPatientRecords\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPatientRecords.sol\":{\"keccak256\":\"0x45a246df53e81ac7d14444dbbb9b176ae596358f70cba7abc8ea7d618fabbf3b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cf64e53d79df31ad850d002e73b2eb9fb94f96d82eabc10b6170125dea7e0016\",\"dweb:/ipfs/QmZCBRtB8gxUNX4KteQBt92Q7DqUj6cJATURcEu8JxpdPf\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201fc1c407c15189975636b1b146091fe76cc9bb14c57729ee7435aab97211a11064736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201fc1c407c15189975636b1b146091fe76cc9bb14c57729ee7435aab97211a11064736f6c63430008130033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "57:467:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "57:467:2:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nlibrary IPatientRecords {\n    struct Patient {\n        bool isRegistered;\n        string[] recordHashes;\n        mapping(address => bool) authorizedDoctors;\n        string encryptionKey;\n    }\n\n    struct Doctor {\n        bool isRegistered;\n        string name;\n        string speciality;\n        string encryptionKey;\n    }\n\n    struct MedicalRecord {\n        string ipfsHash;\n        uint256 timestamp;\n        address creator;\n        string encryptedData;\n    }\n}\n",
+  "sourceMap": "58:467:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "58:467:2:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\nlibrary IPatientRecords {\n    struct Patient {\n        bool isRegistered;\n        string[] recordHashes;\n        mapping(address => bool) authorizedDoctors;\n        string encryptionKey;\n    }\n\n    struct Doctor {\n        bool isRegistered;\n        string name;\n        string speciality;\n        string encryptionKey;\n    }\n\n    struct MedicalRecord {\n        string ipfsHash;\n        uint256 timestamp;\n        address creator;\n        string encryptedData;\n    }\n}\n",
   "sourcePath": "/home/hafdaoui/Desktop/blockchain/project-fin-module/medical-record-blockchain/contracts/IPatientRecords.sol",
   "ast": {
     "absolutePath": "project:/contracts/IPatientRecords.sol",
@@ -28,10 +28,10 @@
           "solidity",
           "^",
           "0.8",
-          ".0"
+          ".19"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:2"
+        "src": "32:24:2"
       },
       {
         "abstract": false,
@@ -45,7 +45,7 @@
           386
         ],
         "name": "IPatientRecords",
-        "nameLocation": "65:15:2",
+        "nameLocation": "66:15:2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -57,10 +57,10 @@
                 "id": 357,
                 "mutability": "mutable",
                 "name": "isRegistered",
-                "nameLocation": "117:12:2",
+                "nameLocation": "118:12:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 367,
-                "src": "112:17:2",
+                "src": "113:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -71,7 +71,7 @@
                   "id": 356,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "112:4:2",
+                  "src": "113:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -84,10 +84,10 @@
                 "id": 360,
                 "mutability": "mutable",
                 "name": "recordHashes",
-                "nameLocation": "148:12:2",
+                "nameLocation": "149:12:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 367,
-                "src": "139:21:2",
+                "src": "140:21:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -99,7 +99,7 @@
                     "id": 358,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "139:6:2",
+                    "src": "140:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -107,7 +107,7 @@
                   },
                   "id": 359,
                   "nodeType": "ArrayTypeName",
-                  "src": "139:8:2",
+                  "src": "140:8:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
                     "typeString": "string[]"
@@ -120,10 +120,10 @@
                 "id": 364,
                 "mutability": "mutable",
                 "name": "authorizedDoctors",
-                "nameLocation": "195:17:2",
+                "nameLocation": "196:17:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 367,
-                "src": "170:42:2",
+                "src": "171:42:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -138,14 +138,14 @@
                     "id": 361,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "178:7:2",
+                    "src": "179:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "170:24:2",
+                  "src": "171:24:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                     "typeString": "mapping(address => bool)"
@@ -156,7 +156,7 @@
                     "id": 362,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "189:4:2",
+                    "src": "190:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -170,10 +170,10 @@
                 "id": 366,
                 "mutability": "mutable",
                 "name": "encryptionKey",
-                "nameLocation": "229:13:2",
+                "nameLocation": "230:13:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 367,
-                "src": "222:20:2",
+                "src": "223:20:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -184,7 +184,7 @@
                   "id": 365,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "222:6:2",
+                  "src": "223:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -194,10 +194,10 @@
               }
             ],
             "name": "Patient",
-            "nameLocation": "94:7:2",
+            "nameLocation": "95:7:2",
             "nodeType": "StructDefinition",
             "scope": 386,
-            "src": "87:162:2",
+            "src": "88:162:2",
             "visibility": "public"
           },
           {
@@ -209,10 +209,10 @@
                 "id": 369,
                 "mutability": "mutable",
                 "name": "isRegistered",
-                "nameLocation": "284:12:2",
+                "nameLocation": "285:12:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 376,
-                "src": "279:17:2",
+                "src": "280:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -223,7 +223,7 @@
                   "id": 368,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "279:4:2",
+                  "src": "280:4:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -236,10 +236,10 @@
                 "id": 371,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "313:4:2",
+                "nameLocation": "314:4:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 376,
-                "src": "306:11:2",
+                "src": "307:11:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -250,7 +250,7 @@
                   "id": 370,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "306:6:2",
+                  "src": "307:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -263,10 +263,10 @@
                 "id": 373,
                 "mutability": "mutable",
                 "name": "speciality",
-                "nameLocation": "334:10:2",
+                "nameLocation": "335:10:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 376,
-                "src": "327:17:2",
+                "src": "328:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -277,7 +277,7 @@
                   "id": 372,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "327:6:2",
+                  "src": "328:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -290,10 +290,10 @@
                 "id": 375,
                 "mutability": "mutable",
                 "name": "encryptionKey",
-                "nameLocation": "361:13:2",
+                "nameLocation": "362:13:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 376,
-                "src": "354:20:2",
+                "src": "355:20:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -304,7 +304,7 @@
                   "id": 374,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "354:6:2",
+                  "src": "355:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -314,10 +314,10 @@
               }
             ],
             "name": "Doctor",
-            "nameLocation": "262:6:2",
+            "nameLocation": "263:6:2",
             "nodeType": "StructDefinition",
             "scope": 386,
-            "src": "255:126:2",
+            "src": "256:126:2",
             "visibility": "public"
           },
           {
@@ -329,10 +329,10 @@
                 "id": 378,
                 "mutability": "mutable",
                 "name": "ipfsHash",
-                "nameLocation": "425:8:2",
+                "nameLocation": "426:8:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 385,
-                "src": "418:15:2",
+                "src": "419:15:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -343,7 +343,7 @@
                   "id": 377,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "418:6:2",
+                  "src": "419:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -356,10 +356,10 @@
                 "id": 380,
                 "mutability": "mutable",
                 "name": "timestamp",
-                "nameLocation": "451:9:2",
+                "nameLocation": "452:9:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 385,
-                "src": "443:17:2",
+                "src": "444:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -370,7 +370,7 @@
                   "id": 379,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "443:7:2",
+                  "src": "444:7:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -383,10 +383,10 @@
                 "id": 382,
                 "mutability": "mutable",
                 "name": "creator",
-                "nameLocation": "478:7:2",
+                "nameLocation": "479:7:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 385,
-                "src": "470:15:2",
+                "src": "471:15:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -397,7 +397,7 @@
                   "id": 381,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "470:7:2",
+                  "src": "471:7:2",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -411,10 +411,10 @@
                 "id": 384,
                 "mutability": "mutable",
                 "name": "encryptedData",
-                "nameLocation": "502:13:2",
+                "nameLocation": "503:13:2",
                 "nodeType": "VariableDeclaration",
                 "scope": 385,
-                "src": "495:20:2",
+                "src": "496:20:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -425,7 +425,7 @@
                   "id": 383,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "495:6:2",
+                  "src": "496:6:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -435,19 +435,19 @@
               }
             ],
             "name": "MedicalRecord",
-            "nameLocation": "394:13:2",
+            "nameLocation": "395:13:2",
             "nodeType": "StructDefinition",
             "scope": 386,
-            "src": "387:135:2",
+            "src": "388:135:2",
             "visibility": "public"
           }
         ],
         "scope": 387,
-        "src": "57:467:2",
+        "src": "58:467:2",
         "usedErrors": []
       }
     ],
-    "src": "32:493:2"
+    "src": "32:494:2"
   },
   "compiler": {
     "name": "solc",
@@ -455,7 +455,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-12-05T14:42:31.186Z",
+  "updatedAt": "2024-12-05T16:34:41.095Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
