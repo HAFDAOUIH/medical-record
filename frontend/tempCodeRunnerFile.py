@@ -1,1 +1,1 @@
-entry_allergies
+build/contracts/DoctorContract.json

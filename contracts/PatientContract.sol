@@ -104,16 +104,6 @@ contract PatientContract {
         patient.password
     );
     }
-    function addressToString(address _address) public pure returns (string memory) {
-            bytes32 value = bytes32(uint256(uint160(_address)));
-            bytes memory alphabet = "0123456789abcdef";
-            bytes memory str = new bytes(40);
-            for (uint i = 0; i < 20; i++) {
-                str[i * 2] = alphabet[uint8(value[i + 12] >> 4)];
-                str[1 + i * 2] = alphabet[uint8(value[i + 12] & 0x0f)];
-            }
-            return string(str);
-        }
 
     function updatePatientDetails(
         string memory _fullName,
@@ -141,43 +131,30 @@ contract PatientContract {
         string memory _patientAddress,
         string memory _ipfsHash
     ) public {
-        // Convert msg.sender to string
-        string memory senderAddress = addressToString(msg.sender);
-        
-        // Check if the caller is either the patient or an authorized doctor
+        IPatientRecords.Patient storage patient = patients[_patientAddress];
         require(
-            keccak256(abi.encodePacked(senderAddress)) == keccak256(abi.encodePacked(_patientAddress)) || 
-            patients[_patientAddress].authorizedDoctors[senderAddress],
+            patient.isRegistered,
             "Not authorized to add medical record"
         );
-
-        // Access the patient record and modify it
-        IPatientRecords.Patient storage patient = patients[_patientAddress];
         
-        // Add the IPFS hash to the patient's recordHashes array
+        
         patient.recordHashes.push(_ipfsHash);
 
-        // Emit the event to signal a new record has been added
         emit RecordAdded(msg.sender, _ipfsHash);
     }
     
-    function getPatientRecords(string memory _patientAddress, string memory _walletAddress) 
+    function getPatientRecords(string memory _patientAddress) 
     public 
     view 
     returns (string[] memory) 
     {
-        // Convert msg.sender to string
-        string memory senderAddress = addressToString(msg.sender);
-        
-        // Check if the caller is either the patient or an authorized doctor
-        require(
-            keccak256(abi.encodePacked(senderAddress)) == keccak256(abi.encodePacked(_patientAddress)) || 
-            patients[_patientAddress].authorizedDoctors[senderAddress],
-            "Not authorized to view records"
+        IPatientRecords.Patient storage patient = patients[_patientAddress];
+         require(
+            patient.isRegistered,
+            "Not authorized to add medical record"
         );
         
-        // Access the patient record and return their recordHashes
-        IPatientRecords.Patient storage patient = patients[_patientAddress];
+        
         return patient.recordHashes;
     }
 

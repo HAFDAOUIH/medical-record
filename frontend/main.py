@@ -1,3 +1,4 @@
+import datetime
 import hashlib
 import os
 import re
@@ -669,7 +670,7 @@ class App:
         self.button_sidebar2 = ctk.CTkButton(self.sidebar1, text="Register Patient", fg_color="#B6D0E2", font=("Arial", 18, "bold"), text_color="black",command=self.register_patient_form)
         self.button_sidebar2.pack(pady=25, padx=60)
 
-        self.button_sidebar3 = ctk.CTkButton(self.sidebar1, text="View Transactions", fg_color="#B6D0E2", font=("Arial", 18, "bold"), text_color="black",)
+        self.button_sidebar3 = ctk.CTkButton(self.sidebar1, text="View Transactions", fg_color="#B6D0E2", font=("Arial", 18, "bold"), text_color="black",command=self.view_transaction)
         self.button_sidebar3.pack(pady=25, padx=60)
 
         self.button_sidebar4 = ctk.CTkButton(self.sidebar1, text="Log Out", fg_color="#B6D0E2", font=("Arial", 18, "bold"), text_color="black", command=self.logout)
@@ -679,7 +680,7 @@ class App:
         self.main_content1.grid(row=0, column=1, padx=20, pady=20)
 
        
-        self.button_main_content1 = ctk.CTkButton(self.main_content1, text="Main Content Button", fg_color="#E1EBEE", text_color="black", font=("Arial", 20), command=self.logout)
+        self.button_main_content1 = ctk.CTkButton(self.main_content1, text="", fg_color="#E1EBEE", text_color="black", font=("Arial", 20), command=self.logout)
         self.button_main_content1.pack(pady=20)
 
         # Frame 2
@@ -737,7 +738,7 @@ class App:
         self.main_content3 = ctk.CTkFrame(self.frame3, fg_color="#E1EBEE")
         self.main_content3.grid(row=0, column=1, padx=20, pady=20)
 
-        self.button_main_content3 = ctk.CTkButton(self.main_content3, text="Main Content Button", fg_color="#E1EBEE", text_color="black", font=("Arial", 20))
+        self.button_main_content3 = ctk.CTkButton(self.main_content3, text="", fg_color="#E1EBEE", text_color="black", font=("Arial", 20))
         self.button_main_content3.pack(pady=20)
 
     def show_frame1(self):
@@ -1190,6 +1191,85 @@ class App:
         button = ctk.CTkButton(self.main_content1, text="Submit", command=button_event)
         button.grid(row=10, column=1, padx=(170, 0), pady=(10), sticky="w")
 
+    def view_transaction(self):
+        # Clear previous content in `main_content1`
+        for widget in self.main_content1.winfo_children():
+            widget.destroy()
+
+        # Title Label
+        title_label = ctk.CTkLabel(
+            self.main_content1,
+            text="Transaction Logs",
+            font=("Arial", 30, "bold"),
+            fg_color="#E1EBEE",
+            text_color="black",
+            corner_radius=10
+        )
+        title_label.grid(row=0, column=0, columnspan=4, padx=(20, 20), pady=(20, 20), sticky="w")
+
+  
+        headers = ["Actor", "Subject", "Action", "Timestamp"]
+        for col, header in enumerate(headers):
+            header_label = ctk.CTkLabel(
+                self.main_content1,
+                text=header,
+                font=("Arial", 16, "bold"),
+                text_color="black"
+            )
+            header_label.grid(row=1, column=col, padx=(10, 10), pady=(10), sticky="w")
+
+    
+        try:
+           
+            transactions = [
+                    {"actor": "0x2fBB4b2c7872507eD1EBF55360808D83eB5B36bB", "subject": "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83", "action": "Register Admin", "timestamp": 1672531200},
+                    {"actor": "0x2fBB4b2c7872507eD1EBF55360808D83eB5B36bB", "subject": "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83", "action": "Register Patient", "timestamp": 1672534800},
+                    {"actor": "0x2fBB4b2c7872507eD1EBF55360808D83eB5B36bB", "subject": "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83", "action": "Register Doctor", "timestamp": 1672538400},
+                    {"actor": "0x9DE91bd017089AaB244fa1B08914EBC11471B4E2", "subject": "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83", "action": "Add medical record", "timestamp": 1672542000},
+                    {"actor": "0x9DE91bd017089AaB244fa1B08914EBC11471B4E2", "subject": "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83", "action": "Grant Access", "timestamp": 1672545600}
+                ]
+
+   
+            for idx, tx in enumerate(transactions):
+                actor_value = ctk.CTkLabel(
+                    self.main_content1,
+                    text=tx["actor"],
+                    font=("Arial", 14),
+                    text_color="black"
+                )
+                actor_value.grid(row=2 + idx, column=0, padx=(10, 10), pady=(5), sticky="w")
+
+                subject_value = ctk.CTkLabel(
+                    self.main_content1,
+                    text=tx["subject"],
+                    font=("Arial", 14),
+                    text_color="black"
+                )
+                subject_value.grid(row=2 + idx, column=1, padx=(10, 10), pady=(5), sticky="w")
+
+                action_value = ctk.CTkLabel(
+                    self.main_content1,
+                    text=tx["action"],
+                    font=("Arial", 14),
+                    text_color="black"
+                )
+                action_value.grid(row=2 + idx, column=2, padx=(10, 10), pady=(5), sticky="w")
+
+                timestamp_value = ctk.CTkLabel(
+                    self.main_content1,
+                    text=datetime.datetime.fromtimestamp(tx["timestamp"]).strftime('%Y-%m-%d %H:%M:%S'),
+                    font=("Arial", 14),
+                    text_color="black"
+                )
+                timestamp_value.grid(row=2 + idx, column=3, padx=(10, 10), pady=(5), sticky="w")
+        except Exception as e:
+            error_message = ctk.CTkLabel(
+                self.main_content1,
+                text=f"Error fetching transactions: {str(e)}",
+                font=("Arial", 14),
+                text_color="red"
+            )
+            error_message.grid(row=2, column=0, columnspan=4, padx=(10, 10), pady=(5), sticky="w")
             
 
     def View_profile_doctor(self):
@@ -1650,12 +1730,6 @@ class App:
         label_allergies1.grid(row=7, column=1, padx=30, pady=10, sticky="w")
         
 
-        
-        
-
-
-
-
     def Edit_patient_profile(self):
 
         for widget in self.main_content3.winfo_children():
@@ -1923,10 +1997,6 @@ class App:
         button.grid(row=10, column=1, padx=(170, 0), pady=(10), sticky="w")
 
 
-        
-    
-
-
     def Add_patient_record(self):
         # Clear existing widgets
         for widget in self.main_content3.winfo_children():
@@ -1997,31 +2067,7 @@ class App:
                     else:
                         print("Error: IPFS Hash not found in the response.")
                         return None
-                contract_address = CA.patient_contract_adress
-                ABI_PATH = 'build/contracts/PatientContract.json'
-                # Check if ABI file exists
-                if not os.path.exists(ABI_PATH):
-                    raise FileNotFoundError(f"ABI file not found at {ABI_PATH}. Ensure the file exists.")
-
-                # Load contract ABI
-                with open(ABI_PATH, 'r') as abi_file:
-                    contract_abi = json.load(abi_file)['abi']
-
-                wallet_address = self.wallet_address_pateint
-                contract = w3.eth.contract(address=contract_address, abi=contract_abi)
-
-                # Prepare the transaction to add medical record
-                tx_hash = contract.functions.addMedicalRecord(wallet_address, ipfs_hash).transact({
-                    'from': wallet_address
-                })
-
-                # Wait for the transaction receipt
-                w3.eth.wait_for_transaction_receipt(tx_hash)
-
-                # Fetch patient records after the transaction
-                result = contract.functions.getPatientRecords(wallet_address, wallet_address).call()
-                print(f"Record info: {result}")
-
+            
                 return ipfs_hash
 
             except requests.exceptions.RequestException as e:
@@ -2039,8 +2085,17 @@ class App:
             if not file_path:
                 error_label.configure(text="Please select a file!")
                 return
+            w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
+            contract_address = CA.patient_contract_adress
+            ABI_PATH = 'build/contracts/PatientContract.json'
+                # Check if ABI file exists
+            if not os.path.exists(ABI_PATH):
+                    raise FileNotFoundError(f"ABI file not found at {ABI_PATH}. Ensure the file exists.")
 
-            # Upload file to IPFS
+                # Load contract ABI
+            with open(ABI_PATH, 'r') as abi_file:
+                contract_abi = json.load(abi_file)['abi']
+
             ipfs_hash = upload_to_ipfs(file_path)
             if ipfs_hash:
                 success_label.configure(text=f"Uploaded to IPFS: {ipfs_hash}")
@@ -2048,6 +2103,21 @@ class App:
                 self.ipfs_hash = ipfs_hash  # Save IPFS hash
             else:
                 error_label.configure(text="Failed to upload to IPFS")
+            
+            wallet_address = self.wallet_address_pateint
+            contract = w3.eth.contract(address=contract_address, abi=contract_abi)
+
+                # Prepare the transaction to add medical record
+            tx_hash = contract.functions.addMedicalRecord(wallet_address, ipfs_hash).transact({
+                    'from': wallet_address
+            })
+
+                # Wait for the transaction receipt
+            w3.eth.wait_for_transaction_receipt(tx_hash)
+
+                # Fetch patient records after the transaction
+            result = contract.functions.getPatientRecords(wallet_address).call()
+            print(f"Record info: {result}")
 
         upload_button = ctk.CTkButton(
             self.main_content3,
@@ -2082,6 +2152,7 @@ class App:
                 url = f"http://127.0.0.1:8080/ipfs/{self.ipfs_hash}"
                 webbrowser.open(url)
 
+
         download_button = ctk.CTkButton(
             self.main_content3,
             text="View File",
@@ -2093,25 +2164,214 @@ class App:
         )
         download_button.grid(row=5, column=0, padx=(20, 10), pady=(10), sticky="w")
 
+        grant_access_label = ctk.CTkLabel(
+            self.main_content3,
+            text="Grant Access to Doctor",
+            font=("Arial", 16),
+            text_color="black"
+        )
+        grant_access_label.grid(row=6, column=0, padx=(20, 10), pady=(10), sticky="w")
+
+
+        self.grant_access_entry = ctk.CTkEntry(
+            self.main_content3,
+            width=300,
+            placeholder_text="Enter Doctor's Wallet Address"
+        )
+        def grant_access():
+
+            doctor_wallet = self.grant_access_entry.get()
+            if not doctor_wallet:
+                messagebox.showerror("Error","Please enter a wallet address")
+                return
+            try:
+                w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
+                contract_address = CA.patient_contract_adress
+                ABI_PATH = 'build/contracts/PatientContract.json'
+                # Check if ABI file exists
+                if not os.path.exists(ABI_PATH):
+                    raise FileNotFoundError(f"ABI file not found at {ABI_PATH}. Ensure the file exists.")
+
+                # Load contract ABI
+                with open(ABI_PATH, 'r') as abi_file:
+                    contract_abi = json.load(abi_file)['abi']
+
+                wallet_address = self.wallet_address_pateint
+                contract = w3.eth.contract(address=contract_address, abi=contract_abi)
+                
+                tx_hash = contract.functions.grantAccess(doctor_wallet , wallet_address).transact({'from': wallet_address})
+                w3.eth.wait_for_transaction_receipt(tx_hash)
+                messagebox.showinfo(f"Success",f"Access granted to: {doctor_wallet}")
+                self.grant_access_entry.delete(0, 'end') 
+            except Exception as e:
+                messagebox.showerror("Error",{str(e)})
+
+        self.grant_access_entry.grid(row=6, column=1, padx=(10, 20), pady=(10), sticky="w")
+        grant_access_button = ctk.CTkButton(
+            self.main_content3,
+            text="Grant Access",
+            command=grant_access,
+            font=("Arial", 16),
+            fg_color="#1877F2",
+            text_color="white"
+        )
+        grant_access_button.grid(row=6, column=2, padx=(10, 20), pady=(10), sticky="w")
+
+        revoke_access_label = ctk.CTkLabel(
+            self.main_content3,
+            text="Revoke Access from Doctor",
+            font=("Arial", 16),
+            text_color="black"
+        )
+        revoke_access_label.grid(row=7, column=0, padx=(20, 10), pady=(10), sticky="w")
+
+    
+        self.revoke_access_entry = ctk.CTkEntry(
+            self.main_content3,
+            width=300,
+            placeholder_text="Enter Doctor's Wallet Address"
+        )
+        self.revoke_access_entry.grid(row=7, column=1, padx=(10, 20), pady=(10), sticky="w")
+        def revoke_access():
+            print("revoke_access")
+            doctor_wallet = self.revoke_access_entry.get()
+            if not doctor_wallet:
+                messagebox.showerror("Error","Please enter a wallet address")
+                return
+            try:
+                w3 = Web3(Web3.HTTPProvider('http://localhost:8545'))
+                contract_address = CA.patient_contract_adress
+                ABI_PATH = 'build/contracts/PatientContract.json'
+                # Check if ABI file exists
+                if not os.path.exists(ABI_PATH):
+                    raise FileNotFoundError(f"ABI file not found at {ABI_PATH}. Ensure the file exists.")
+
+                # Load contract ABI
+                with open(ABI_PATH, 'r') as abi_file:
+                    contract_abi = json.load(abi_file)['abi']
+
+                wallet_address = self.wallet_address_pateint
+                contract = w3.eth.contract(address=contract_address, abi=contract_abi)
+                
+                tx_hash = contract.functions.revokeAccess(doctor_wallet , wallet_address).transact({'from': wallet_address})
+                w3.eth.wait_for_transaction_receipt(tx_hash)
+                messagebox.showinfo("Success",f"Access revoked from: {doctor_wallet}  ")
+                self.revoke_access_entry.delete(0, 'end') 
+            except Exception as e:
+                messagebox.showerror("Error",{str(e)})
+        revoke_access_button = ctk.CTkButton(
+            self.main_content3,
+            text="Revoke Access",
+            command=revoke_access,
+            font=("Arial", 16),
+            fg_color="#FF4D4D",
+            text_color="white"
+        )
+        revoke_access_button.grid(row=7, column=2, padx=(10, 20), pady=(10), sticky="w")
+
 
     def View_patient(self):
-        # Clear the main content area
-        for widget in self.main_content3.winfo_children():
+        for widget in self.main_content2.winfo_children():
             widget.destroy()
 
-        # Add a form for Register Doctor
-
-        sing_up_label = ctk.CTkLabel(
-            self.main_content3, 
-            text="Patient's Record", 
+        # Title label
+        title_label = ctk.CTkLabel(
+            self.main_content2, 
+            text="Patient's Medical Records", 
             font=("Arial", 30, "bold"), 
             fg_color="#E1EBEE", 
             text_color="black", 
             corner_radius=10
         )
-        sing_up_label.grid(row=0, column=0, columnspan=2, padx=(20,70), pady=(30), sticky="w")
+        title_label.grid(row=0, column=0, columnspan=3, padx=(20, 20), pady=(30, 20), sticky="w")
 
+        # Mock data for medical records (replace this with actual data from the smart contract)
+        records = [
+            {"address": "0xC476B311e4efF9B9a476228f8BD19CA215bb706C", "record_hash": "Qm12345..."},
+            {"address": "0x5dC6aD7Cd568A7E838FDcc44F678382f176a84D3", "record_hash": "Qm67890..."},
+            {"address": "0x2accdf90b8eFaa671f4e45C852AF3e303dB2D022", "record_hash": "QmABCDE..."}
+        ]
 
+        # Headers
+        address_label = ctk.CTkLabel(
+            self.main_content2, 
+            text="Patient Address", 
+            font=("Arial", 16, "bold"), 
+            text_color="black"
+        )
+        address_label.grid(row=1, column=0, padx=(20, 10), pady=(10), sticky="w")
+
+        action_label = ctk.CTkLabel(
+            self.main_content2, 
+            text="Action", 
+            font=("Arial", 16, "bold"), 
+            text_color="black",
+            anchor="center"
+        )
+        action_label.grid(row=1, column=1, padx=(10, 20), pady=(10), sticky="nsew")
+
+        # Generate rows for each record
+        for idx, record in enumerate(records):
+            # Display patient address
+            patient_address_label = ctk.CTkLabel(
+                self.main_content2, 
+                text=record["address"], 
+                font=("Arial", 14), 
+                text_color="black"
+            )
+            patient_address_label.grid(row=2 + idx, column=0, padx=(20, 10), pady=(10), sticky="w")
+
+            # View button
+            def open_record(record_hash=record["record_hash"]):
+                # Simulate opening the record (e.g., open in browser or display details)
+                print(f"Opening medical record: {record_hash}")
+                messagebox.showinfo("View Record", f"Opening record: {record_hash}")
+
+            view_button = ctk.CTkButton(
+                self.main_content2,
+                text="View",
+                command=open_record,
+                font=("Arial", 14),
+                fg_color="#1877F2",
+                text_color="white"
+            )
+            view_button.grid(row=2 + idx, column=2, padx=(10, 20), pady=(10), sticky="w")
+
+            # Additional actions (Update, Download, Add Notes)
+            
+
+            def download_record(record_hash=record["record_hash"]):
+                # Simulate downloading the medical record
+                print(f"Downloading medical record: {record_hash}")
+                messagebox.showinfo("Download Record", f"Downloading record: {record_hash}")
+
+            download_button = ctk.CTkButton(
+                self.main_content2,
+                text="Download Record",
+                command=download_record,
+                font=("Arial", 14),
+                fg_color="#28A745",
+                text_color="white"
+            )
+            download_button.grid(row=2 + idx, column=4, padx=(10, 20), pady=(10), sticky="w")
+
+            def add_notes(record_hash=record["record_hash"]):
+                # Simulate adding notes to the record
+                print(f"Adding notes to record: {record_hash}")
+                messagebox.showinfo("Add Notes", f"Adding notes to record: {record_hash}")
+
+            add_notes_button = ctk.CTkButton(
+                self.main_content2,
+                text="Add Notes",
+                command=add_notes,
+                font=("Arial", 14),
+                fg_color="#FFC107",
+                text_color="white"
+            )
+            add_notes_button.grid(row=2 + idx, column=5, padx=(10, 20), pady=(10), sticky="w")
+
+        
+        
 root = ctk.CTk()
 app = App(root)
 root.mainloop()

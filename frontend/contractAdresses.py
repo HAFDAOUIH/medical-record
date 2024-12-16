@@ -1,4 +1,4 @@
-doctor_contract_adress = "0xb250ccCfdc62D134De0de45bA9212d7df6A7c845"
-admin_contract_adress  = "0xC4CA7Da06beCa70e651856E8c7A76d755b61AebA"
-audit_contract_adress = "0x63DE96A861aC14267a55f3aB6bA17B3500EcEBEf"
-patient_contract_adress = "0x27E479DdB5Cd626EC1B82Bb276e915455f95e1bC"
+doctor_contract_adress = "0x6D94818B025c121a4EEB76BFe6a99D9515079775"
+admin_contract_adress  = "0xD71A83e1cDe21C56c29eEA90B9C5ac38D1c12a83"
+audit_contract_adress = "0x1fA7aE314cE421d0BdA5540F92Bb53cBE450784C"
+patient_contract_adress = "0x40214442992bf603624F5F2e881Ea0DF6dF4b42F"
