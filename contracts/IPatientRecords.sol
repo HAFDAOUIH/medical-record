@@ -5,15 +5,34 @@ library IPatientRecords {
     struct Patient {
         bool isRegistered;
         string[] recordHashes;
-        mapping(address => bool) authorizedDoctors;
+        mapping(string => bool) authorizedDoctors;
         string encryptionKey;
+        string fullName;
+        string gender;
+        uint age;
+        uint weight;
+        uint height;
+        string bloodType;
+        string allergies;
+        string walletAddress;
+        string password;
     }
 
     struct Doctor {
         bool isRegistered;
         string name;
         string speciality;
-        string encryptionKey;
+        string licenseNumber;
+        string contactInfo;
+        string walletAddress; 
+        string password;
+    }
+
+    struct Admin {
+        bool isRegistered;
+        string name;
+        address walletAddress;
+        string hashPassword;
     }
 
     struct MedicalRecord {
@@ -22,4 +41,6 @@ library IPatientRecords {
         address creator;
         string encryptedData;
     }
+
+    
 }

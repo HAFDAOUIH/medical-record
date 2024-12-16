@@ -1,29 +1,29 @@
 {
   "contractName": "IPatientRecords",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPatientRecords.sol\":\"IPatientRecords\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPatientRecords.sol\":{\"keccak256\":\"0x45a246df53e81ac7d14444dbbb9b176ae596358f70cba7abc8ea7d618fabbf3b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cf64e53d79df31ad850d002e73b2eb9fb94f96d82eabc10b6170125dea7e0016\",\"dweb:/ipfs/QmZCBRtB8gxUNX4KteQBt92Q7DqUj6cJATURcEu8JxpdPf\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201fc1c407c15189975636b1b146091fe76cc9bb14c57729ee7435aab97211a11064736f6c63430008130033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201fc1c407c15189975636b1b146091fe76cc9bb14c57729ee7435aab97211a11064736f6c63430008130033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IPatientRecords.sol\":\"IPatientRecords\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IPatientRecords.sol\":{\"keccak256\":\"0x12b6e045dac2c3d12ce1f2d854b7d7264506dfa9c4672d1b5d65005e24e70abb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2593e64f1184ffed3ffe86a66b4bc7ded70f2aee50965c890c78b65f7c610878\",\"dweb:/ipfs/Qmb5Jcx3Xzo355y86KCgE2HH3G8LDGrkKynSnuRkwrB7U6\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122039141e6d9d6b283bfd8e5f1fa8f64d38f97f4b7245c0134c117b1ee59427f9d764736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122039141e6d9d6b283bfd8e5f1fa8f64d38f97f4b7245c0134c117b1ee59427f9d764736f6c63430008130033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "58:467:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "58:467:2:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\nlibrary IPatientRecords {\n    struct Patient {\n        bool isRegistered;\n        string[] recordHashes;\n        mapping(address => bool) authorizedDoctors;\n        string encryptionKey;\n    }\n\n    struct Doctor {\n        bool isRegistered;\n        string name;\n        string speciality;\n        string encryptionKey;\n    }\n\n    struct MedicalRecord {\n        string ipfsHash;\n        uint256 timestamp;\n        address creator;\n        string encryptedData;\n    }\n}\n",
-  "sourcePath": "/home/hafdaoui/Desktop/blockchain/project-fin-module/medical-record-blockchain/contracts/IPatientRecords.sol",
+  "sourceMap": "58:905:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "58:905:3:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\nlibrary IPatientRecords {\n    struct Patient {\n        bool isRegistered;\n        string[] recordHashes;\n        mapping(string => bool) authorizedDoctors;\n        string encryptionKey;\n        string fullName;\n        string gender;\n        uint age;\n        uint weight;\n        uint height;\n        string bloodType;\n        string allergies;\n        string walletAddress;\n        string password;\n    }\n\n    struct Doctor {\n        bool isRegistered;\n        string name;\n        string speciality;\n        string licenseNumber;\n        string contactInfo;\n        string walletAddress; \n        string password;\n    }\n\n    struct Admin {\n        bool isRegistered;\n        string name;\n        address walletAddress;\n        string hashPassword;\n    }\n\n    struct MedicalRecord {\n        string ipfsHash;\n        uint256 timestamp;\n        address creator;\n        string encryptedData;\n    }\n\n    \n}\n",
+  "sourcePath": "C:\\Users\\Hanane\\Desktop\\medical-record\\contracts\\IPatientRecords.sol",
   "ast": {
     "absolutePath": "project:/contracts/IPatientRecords.sol",
     "exportedSymbols": {
       "IPatientRecords": [
-        386
+        616
       ]
     },
-    "id": 387,
+    "id": 617,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 355,
+        "id": 552,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".19"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:24:2"
+        "src": "32:24:3"
       },
       {
         "abstract": false,
@@ -40,27 +40,27 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 386,
+        "id": 616,
         "linearizedBaseContracts": [
-          386
+          616
         ],
         "name": "IPatientRecords",
-        "nameLocation": "66:15:2",
+        "nameLocation": "66:15:3",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "IPatientRecords.Patient",
-            "id": 367,
+            "id": 582,
             "members": [
               {
                 "constant": false,
-                "id": 357,
+                "id": 554,
                 "mutability": "mutable",
                 "name": "isRegistered",
-                "nameLocation": "118:12:2",
+                "nameLocation": "118:12:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 367,
-                "src": "113:17:2",
+                "scope": 582,
+                "src": "113:17:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -68,10 +68,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 356,
+                  "id": 553,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "113:4:2",
+                  "src": "113:4:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -81,13 +81,13 @@
               },
               {
                 "constant": false,
-                "id": 360,
+                "id": 557,
                 "mutability": "mutable",
                 "name": "recordHashes",
-                "nameLocation": "149:12:2",
+                "nameLocation": "149:12:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 367,
-                "src": "140:21:2",
+                "scope": 582,
+                "src": "140:21:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -96,18 +96,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 358,
+                    "id": 555,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "140:6:2",
+                    "src": "140:6:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
                     }
                   },
-                  "id": 359,
+                  "id": 556,
                   "nodeType": "ArrayTypeName",
-                  "src": "140:8:2",
+                  "src": "140:8:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
                     "typeString": "string[]"
@@ -117,46 +117,46 @@
               },
               {
                 "constant": false,
-                "id": 364,
+                "id": 561,
                 "mutability": "mutable",
                 "name": "authorizedDoctors",
-                "nameLocation": "196:17:2",
+                "nameLocation": "195:17:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 367,
-                "src": "171:42:2",
+                "scope": 582,
+                "src": "171:41:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
-                  "typeString": "mapping(address => bool)"
+                  "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_bool_$",
+                  "typeString": "mapping(string => bool)"
                 },
                 "typeName": {
-                  "id": 363,
+                  "id": 560,
                   "keyName": "",
                   "keyNameLocation": "-1:-1:-1",
                   "keyType": {
-                    "id": 361,
-                    "name": "address",
+                    "id": 558,
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:2",
+                    "src": "179:6:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "171:24:2",
+                  "src": "171:23:3",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
-                    "typeString": "mapping(address => bool)"
+                    "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_bool_$",
+                    "typeString": "mapping(string => bool)"
                   },
                   "valueName": "",
                   "valueNameLocation": "-1:-1:-1",
                   "valueType": {
-                    "id": 362,
+                    "id": 559,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "190:4:2",
+                    "src": "189:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -167,13 +167,13 @@
               },
               {
                 "constant": false,
-                "id": 366,
+                "id": 563,
                 "mutability": "mutable",
                 "name": "encryptionKey",
-                "nameLocation": "230:13:2",
+                "nameLocation": "229:13:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 367,
-                "src": "223:20:2",
+                "scope": 582,
+                "src": "222:20:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -181,76 +181,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 365,
+                  "id": 562,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "223:6:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "Patient",
-            "nameLocation": "95:7:2",
-            "nodeType": "StructDefinition",
-            "scope": 386,
-            "src": "88:162:2",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "IPatientRecords.Doctor",
-            "id": 376,
-            "members": [
-              {
-                "constant": false,
-                "id": 369,
-                "mutability": "mutable",
-                "name": "isRegistered",
-                "nameLocation": "285:12:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 376,
-                "src": "280:17:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_bool",
-                  "typeString": "bool"
-                },
-                "typeName": {
-                  "id": 368,
-                  "name": "bool",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "280:4:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  }
-                },
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 371,
-                "mutability": "mutable",
-                "name": "name",
-                "nameLocation": "314:4:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 376,
-                "src": "307:11:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 370,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "307:6:2",
+                  "src": "222:6:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -260,13 +194,13 @@
               },
               {
                 "constant": false,
-                "id": 373,
+                "id": 565,
                 "mutability": "mutable",
-                "name": "speciality",
-                "nameLocation": "335:10:2",
+                "name": "fullName",
+                "nameLocation": "259:8:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 376,
-                "src": "328:17:2",
+                "scope": 582,
+                "src": "252:15:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -274,10 +208,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 372,
+                  "id": 564,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "328:6:2",
+                  "src": "252:6:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -287,13 +221,13 @@
               },
               {
                 "constant": false,
-                "id": 375,
+                "id": 567,
                 "mutability": "mutable",
-                "name": "encryptionKey",
-                "nameLocation": "362:13:2",
+                "name": "gender",
+                "nameLocation": "284:6:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 376,
-                "src": "355:20:2",
+                "scope": 582,
+                "src": "277:13:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -301,49 +235,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 374,
+                  "id": 566,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "355:6:2",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_storage_ptr",
-                    "typeString": "string"
-                  }
-                },
-                "visibility": "internal"
-              }
-            ],
-            "name": "Doctor",
-            "nameLocation": "263:6:2",
-            "nodeType": "StructDefinition",
-            "scope": 386,
-            "src": "256:126:2",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "IPatientRecords.MedicalRecord",
-            "id": 385,
-            "members": [
-              {
-                "constant": false,
-                "id": 378,
-                "mutability": "mutable",
-                "name": "ipfsHash",
-                "nameLocation": "426:8:2",
-                "nodeType": "VariableDeclaration",
-                "scope": 385,
-                "src": "419:15:2",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_string_storage_ptr",
-                  "typeString": "string"
-                },
-                "typeName": {
-                  "id": 377,
-                  "name": "string",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "419:6:2",
+                  "src": "277:6:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -353,13 +248,13 @@
               },
               {
                 "constant": false,
-                "id": 380,
+                "id": 569,
                 "mutability": "mutable",
-                "name": "timestamp",
-                "nameLocation": "452:9:2",
+                "name": "age",
+                "nameLocation": "305:3:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 385,
-                "src": "444:17:2",
+                "scope": 582,
+                "src": "300:8:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -367,10 +262,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 379,
-                  "name": "uint256",
+                  "id": 568,
+                  "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "444:7:2",
+                  "src": "300:4:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -380,13 +275,442 @@
               },
               {
                 "constant": false,
-                "id": 382,
+                "id": 571,
                 "mutability": "mutable",
-                "name": "creator",
-                "nameLocation": "479:7:2",
+                "name": "weight",
+                "nameLocation": "323:6:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 385,
-                "src": "471:15:2",
+                "scope": 582,
+                "src": "318:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 570,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "318:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 573,
+                "mutability": "mutable",
+                "name": "height",
+                "nameLocation": "344:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 582,
+                "src": "339:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 572,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "339:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 575,
+                "mutability": "mutable",
+                "name": "bloodType",
+                "nameLocation": "367:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 582,
+                "src": "360:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 574,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "360:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 577,
+                "mutability": "mutable",
+                "name": "allergies",
+                "nameLocation": "393:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 582,
+                "src": "386:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 576,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "386:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 579,
+                "mutability": "mutable",
+                "name": "walletAddress",
+                "nameLocation": "419:13:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 582,
+                "src": "412:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 578,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "412:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 581,
+                "mutability": "mutable",
+                "name": "password",
+                "nameLocation": "449:8:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 582,
+                "src": "442:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 580,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "442:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Patient",
+            "nameLocation": "95:7:3",
+            "nodeType": "StructDefinition",
+            "scope": 616,
+            "src": "88:376:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IPatientRecords.Doctor",
+            "id": 597,
+            "members": [
+              {
+                "constant": false,
+                "id": 584,
+                "mutability": "mutable",
+                "name": "isRegistered",
+                "nameLocation": "499:12:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "494:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 583,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "494:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 586,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "528:4:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "521:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 585,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "521:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 588,
+                "mutability": "mutable",
+                "name": "speciality",
+                "nameLocation": "549:10:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "542:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 587,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "542:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 590,
+                "mutability": "mutable",
+                "name": "licenseNumber",
+                "nameLocation": "576:13:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "569:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 589,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "569:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 592,
+                "mutability": "mutable",
+                "name": "contactInfo",
+                "nameLocation": "606:11:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "599:18:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 591,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "599:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 594,
+                "mutability": "mutable",
+                "name": "walletAddress",
+                "nameLocation": "634:13:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "627:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 593,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "627:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 596,
+                "mutability": "mutable",
+                "name": "password",
+                "nameLocation": "665:8:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 597,
+                "src": "658:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 595,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "658:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Doctor",
+            "nameLocation": "477:6:3",
+            "nodeType": "StructDefinition",
+            "scope": 616,
+            "src": "470:210:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IPatientRecords.Admin",
+            "id": 606,
+            "members": [
+              {
+                "constant": false,
+                "id": 599,
+                "mutability": "mutable",
+                "name": "isRegistered",
+                "nameLocation": "714:12:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 606,
+                "src": "709:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 598,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "709:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 601,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "743:4:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 606,
+                "src": "736:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 600,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "736:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 603,
+                "mutability": "mutable",
+                "name": "walletAddress",
+                "nameLocation": "765:13:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 606,
+                "src": "757:21:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -394,10 +718,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 381,
+                  "id": 602,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "471:7:2",
+                  "src": "757:7:3",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -408,13 +732,13 @@
               },
               {
                 "constant": false,
-                "id": 384,
+                "id": 605,
                 "mutability": "mutable",
-                "name": "encryptedData",
-                "nameLocation": "503:13:2",
+                "name": "hashPassword",
+                "nameLocation": "795:12:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 385,
-                "src": "496:20:2",
+                "scope": 606,
+                "src": "788:19:3",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -422,10 +746,131 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 383,
+                  "id": 604,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "496:6:2",
+                  "src": "788:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Admin",
+            "nameLocation": "693:5:3",
+            "nodeType": "StructDefinition",
+            "scope": 616,
+            "src": "686:128:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IPatientRecords.MedicalRecord",
+            "id": 615,
+            "members": [
+              {
+                "constant": false,
+                "id": 608,
+                "mutability": "mutable",
+                "name": "ipfsHash",
+                "nameLocation": "858:8:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 615,
+                "src": "851:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 607,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "851:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 610,
+                "mutability": "mutable",
+                "name": "timestamp",
+                "nameLocation": "884:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 615,
+                "src": "876:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 609,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "876:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 612,
+                "mutability": "mutable",
+                "name": "creator",
+                "nameLocation": "911:7:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 615,
+                "src": "903:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 611,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "903:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 614,
+                "mutability": "mutable",
+                "name": "encryptedData",
+                "nameLocation": "935:13:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 615,
+                "src": "928:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 613,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "928:6:3",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -435,19 +880,19 @@
               }
             ],
             "name": "MedicalRecord",
-            "nameLocation": "395:13:2",
+            "nameLocation": "827:13:3",
             "nodeType": "StructDefinition",
-            "scope": 386,
-            "src": "388:135:2",
+            "scope": 616,
+            "src": "820:135:3",
             "visibility": "public"
           }
         ],
-        "scope": 387,
-        "src": "58:467:2",
+        "scope": 617,
+        "src": "58:905:3",
         "usedErrors": []
       }
     ],
-    "src": "32:494:2"
+    "src": "32:932:3"
   },
   "compiler": {
     "name": "solc",
@@ -455,7 +900,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-12-05T16:34:41.095Z",
+  "updatedAt": "2024-12-16T17:03:42.382Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -1,0 +1,4 @@
+doctor_contract_adress = "0xb250ccCfdc62D134De0de45bA9212d7df6A7c845"
+admin_contract_adress  = "0xC4CA7Da06beCa70e651856E8c7A76d755b61AebA"
+audit_contract_adress = "0x63DE96A861aC14267a55f3aB6bA17B3500EcEBEf"
+patient_contract_adress = "0x27E479DdB5Cd626EC1B82Bb276e915455f95e1bC"

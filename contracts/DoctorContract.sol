@@ -7,7 +7,7 @@ import "./IPatientRecords.sol";
 contract DoctorContract {
     using IPatientRecords for IPatientRecords.Doctor;
 
-    mapping(address => IPatientRecords.Doctor) public doctors;
+    mapping(string => IPatientRecords.Doctor) public doctors;
     address public auditContractAddress;
 
     event DoctorRegistered(address indexed doctorAddress, string name);
@@ -17,23 +17,31 @@ contract DoctorContract {
         auditContractAddress = _auditContractAddress;
     }
 
-    modifier onlyRegisteredDoctor() {
-        require(doctors[msg.sender].isRegistered, "Not a registered doctor");
+    modifier onlyRegisteredDoctor(string memory _walletAddress) {
+        require(doctors[_walletAddress].isRegistered, "Not a registered doctor");
         _;
     }
 
     function registerDoctor(
         string memory _name,
         string memory _speciality,
-        string memory _encryptionKey
+        string memory _licenseNumber,
+        string memory _contactInfo,
+        string memory _password,
+        string memory _walletAddress
+       
     ) public {
-        require(!doctors[msg.sender].isRegistered, "Doctor already registered");
+        require(!doctors[_walletAddress].isRegistered, "Doctor already registered");
 
-        doctors[msg.sender] = IPatientRecords.Doctor({
+        doctors[_walletAddress] = IPatientRecords.Doctor({
             isRegistered: true,
             name: _name,
             speciality: _speciality,
-            encryptionKey: _encryptionKey
+            licenseNumber: _licenseNumber,
+            contactInfo: _contactInfo,
+            password: _password,
+            walletAddress : _walletAddress
+           
         });
 
         emit DoctorRegistered(msg.sender, _name);
@@ -42,27 +50,33 @@ contract DoctorContract {
     function updateDoctorInfo(
         string memory _name,
         string memory _speciality,
-        string memory _encryptionKey
-    ) public onlyRegisteredDoctor {
-        IPatientRecords.Doctor storage doctor = doctors[msg.sender];
+        string memory _licenseNumber,
+        string memory _contactInfo,
+        string memory _walletAddress
+        
+    ) public onlyRegisteredDoctor(_walletAddress) {
+        IPatientRecords.Doctor storage doctor = doctors[_walletAddress];
         doctor.name = _name;
         doctor.speciality = _speciality;
-        doctor.encryptionKey = _encryptionKey;
+        doctor.licenseNumber = _licenseNumber;
+        doctor.contactInfo = _contactInfo;
+        
 
         emit DoctorUpdated(msg.sender);
     }
 
-    function isDoctorRegistered(address doctorAddress) public view returns (bool) {
-        return doctors[doctorAddress].isRegistered;
+    function isDoctorRegistered(string memory _walletAddress) public view returns (bool) {
+        return doctors[_walletAddress].isRegistered;
     }
 
-    function getDoctorInfo(address doctorAddress)
+    function getDoctorInfo(string memory _walletAddress)
     public
     view
-    returns (string memory name, string memory speciality)
+    returns (string memory name, string memory speciality, string memory licenseNumber, string memory contactInfo,string memory password)
     {
-        require(doctors[doctorAddress].isRegistered, "Doctor not registered");
-        IPatientRecords.Doctor storage doctor = doctors[doctorAddress];
-        return (doctor.name, doctor.speciality);
+        
+        IPatientRecords.Doctor storage doctor = doctors[_walletAddress];
+        require(doctor.isRegistered, "Doctor not registered");
+        return (doctor.name, doctor.speciality, doctor.licenseNumber, doctor.contactInfo,doctor.password);
     }
 }
